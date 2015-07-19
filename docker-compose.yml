@@ -1,0 +1,14 @@
+mysql:
+  image: mysql:5.7.7
+  environment:
+    - MYSQL_ROOT_PASSWORD=yongwu
+web:
+  build: .
+  command: gunicorn -b 0.0.0.0:8000 yongwu-api:app
+  ports:
+    - "5000:8000"
+  volumes:
+    - .:/usr/src/app
+  links:
+    - mysql
+
