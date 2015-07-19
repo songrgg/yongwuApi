@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -i http://pypi.douban.com/simple/ --trusted-host 
 
 COPY . /usr/src/app
 
-CMD ["gunicorn", "yongwu-api:app"]
+CMD ["gunicorn", "yongwu_api:app"]
