@@ -19,6 +19,7 @@ class JobModel(Base):
     city = Column(String(20), nullable=False)
     companyLogo = Column(String(30))
     companySize = Column(Integer)
+    companyName = Column(String(30), nullable=False)
     industryField = Column(String(30))
     financeStage = Column(String(30))
     website = Column(String(30))

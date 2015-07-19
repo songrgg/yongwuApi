@@ -14,7 +14,31 @@ class JobResource(object):
         job_list = [
             {
                 'id': job.id,
-                'company': job.company
+                'city': job.city,
+                'companyLogo': job.companyLogo,
+                'companySize': job.companySize,
+                'companyName': job.companyName,
+                'industryField': job.industryField,
+                'financeStage': job.financeStage,
+                'website': job.website,
+
+                'salary': job.salary,
+                'jobNature': job.jobNature,
+                'createTime': str(job.createTime),
+                'positionName': job.positionName,
+                'positionType': job.positionType,
+                'positionAdvantage': job.positionAdvantage,
+                'positionFirstType': job.positionFirstType,
+                'jobDescription': job.jobDescription,
+                'workTime': job.workTime,
+
+                'minWorkYear': job.minWorkYear,
+                'maxWorkYear': job.maxWorkYear,
+                'education': job.education,
+
+                'positionId': job.positionId,
+                'originUrl': job.originUrl,
+                'fromWhich': job.fromWhich
             }
             for job in DBSession.query(JobModel).all()
             ]
@@ -22,7 +46,14 @@ class JobResource(object):
 
     def on_post(self, req, resp):
         new_job = json.loads(req.stream.read())
-        DBSession.add(JobModel(**new_job))
+        try:
+            DBSession.add(JobModel(**new_job))
+            DBSession.commit()
+        except:
+            DBSession.rollback()
+        finally:
+            DBSession.close()
+
         resp.body = json.dumps({'status': 'ok'})
 
 
