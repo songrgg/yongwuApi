@@ -4,7 +4,7 @@ mysql:
     - MYSQL_ROOT_PASSWORD=yongwu
 web:
   build: .
-  command: gunicorn -b 0.0.0.0:8000 yongwu_gapi:app
+  command: gunicorn -b 0.0.0.0:8000 yongwu_api:app
   ports:
     - "5000:8000"
   volumes:
