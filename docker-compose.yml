@@ -11,4 +11,8 @@ web:
     - .:/usr/src/app
   links:
     - mysql
-
+    - redis
+redis:
+  image: redis:2.6
+  ports:
+    - "6379:6379"

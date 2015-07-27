@@ -26,7 +26,8 @@ class JobModel(Base):
 
     salary = Column(String(30), nullable=False)
     jobNature = Column(String(50))
-    createTime = Column(DateTime, default=datetime.datetime.now, nullable=False)
+    createTime = Column(DateTime, default=datetime.datetime.now,
+                        nullable=False)
     positionName = Column(String(30), nullable=False)
     positionType = Column(String(30))
     positionAdvantage = Column(Text)
